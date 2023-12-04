@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Conversion Tools</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-yellowgreen w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large w3-hover-yellowgreen">Home Page</a>
+    <a href="conversion.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-yellowgreen">Conversion</a>
+    <a href="incometax.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-yellowgreen">Income Tax Calculator</a>
+    <a href="factorial.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-white">Factorials</a>
+    <a href="payroll.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-yellowgreen">Simple Payroll</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+
+ <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="conversion.html" class="w3-bar-item w3-button w3-padding-large">Conversions</a>
+    <a href="incometax.html" class="w3-bar-item w3-button w3-padding-large">Income Tax Calculator</a>
+    <a href="factorial.html" class="w3-bar-item w3-button w3-padding-large">Factorials</a>
+    <a href="payroll.html" class="w3-bar-item w3-button w3-padding-large">Simple Payroll</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container w3-red w3-center" style="padding:65px 16px">
+<h1 class="w3-margin w3-jumbo w3-text-white w3-bold" style="font-family: Arial, sans-serif;">Factorials</h1>
+</header>
+
+
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 35px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+    <title>Natural Numbers Calculator</title>
+</head>
+<body>
+
+    <main>
+        <label for="numberInput">Enter a positive integer (n):</label>
+        <input type="number" id="numberInput" placeholder="Enter a number">
+        <button onclick="calculate()">Calculate</button>
+
+        <div id="result"></div>
+    </main>
+
+    <script>
+        function calculate() {
+            const n = parseInt(document.getElementById("numberInput").value);
+
+            if (isNaN(n) || n <= 0) {
+                document.getElementById("result").innerHTML = "Please enter a positive integer.";
+                return;
+            }
+
+            // Calculate Factorial using While Loop
+            let factorial = 1;
+            let i = 1;
+            while (i <= n) {
+                factorial *= i;
+                i++;
+            }
+
+            // Calculate Sum using Do While Loop
+            let sum = 0;
+            let j = 1;
+            do {
+                sum += j;
+                j++;
+            } while (j <= n);
+
+            // Calculate Average using For Loop
+            let average = 0;
+            for (let k = 1; k <= n; k++) {
+                average += k;
+            }
+            average /= n;
+
+            // Display the results
+            document.getElementById("result").innerHTML = `
+                <p>The ${n}th factorial is: ${factorial}</p>
+                <p>The sum of the first ${n} numbers is: ${sum}</p>
+                <p>The average of the first ${n} numbers is: ${average.toFixed(2)}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
