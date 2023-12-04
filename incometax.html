@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Conversion Tools</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-yellowgreen w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large w3-hover-yellowgreen">Home Page</a>
+    <a href="conversion.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-yellowgreen">Conversion</a>
+    <a href="incometax.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-white">Income Tax Calculator</a>
+    <a href="factorial.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-yellowgreen">Factorials</a>
+    <a href="payroll.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-yellowgreen">Simple Payroll</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+
+ <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="conversion.html" class="w3-bar-item w3-button w3-padding-large">Conversions</a>
+    <a href="incometax.html" class="w3-bar-item w3-button w3-padding-large">Income Tax Calculator</a>
+    <a href="factorial.html" class="w3-bar-item w3-button w3-padding-large">Factorials</a>
+    <a href="payroll.html" class="w3-bar-item w3-button w3-padding-large">Simple Payroll</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container w3-red w3-center" style="padding:65px 16px">
+<h1 class="w3-margin w3-jumbo w3-text-white w3-bold" style="font-family: Arial, sans-serif;">Income Tax Calculator</h1>
+</header>
+
+
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+font-size: 20px;
+        }
+
+
+        main {
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 35px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+    </style>
+    <title>Income Tax Calculator</title>
+</head>
+<body>
+
+
+    <main>
+        <label for="income">Enter your net taxable income:</label>
+        <input type="number" id="income" placeholder="Enter Here">
+
+        <button onclick="calculateTax()">Calculate Tax</button>
+
+        <p id="result"></p>
+    </main>
+
+    <script>
+        function calculateTax() {
+            const income = document.getElementById("income").value;
+
+            if (income !== "") {
+                incomeAmount = parseFloat(income);
+
+                if (incomeAmount <= 250000) {
+                    taxAmount = 0;
+                } else if (incomeAmount <= 400000) {
+                    taxAmount = 0.2 * (incomeAmount - 250000);
+                } else if (incomeAmount <= 800000) {
+                    taxAmount = 30000 + 0.25 * (incomeAmount - 400000);
+                } else if (incomeAmount <= 2000000) {
+                    taxAmount = 130000 + 0.3 * (incomeAmount - 800000);
+                } else if (incomeAmount <= 8000000) {
+                    taxAmount = 490000 + 0.32 * (incomeAmount - 2000000);
+                } else {
+                    taxAmount = 2410000 + 0.35 * (incomeAmount - 8000000);
+                }
+
+                const result = `Your income tax is ₱${taxAmount.toFixed(2)}`;
+                document.getElementById("result").textContent = result;
+            } else {
+                document.getElementById("result").textContent = "Please enter your net taxable income";
+            }
+        }
+    </script>
+</body>
+</html>
