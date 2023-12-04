@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Conversion Tools</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-yellowgreen w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large w3-hover-yellowgreen">Home Page</a>
+    <a href="conversion.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-yellowgreen">Conversion</a>
+    <a href="incometax.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-yellowgreen">Income Tax Calculator</a>
+    <a href="factorial.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-yellowgreen">Factorials</a>
+    <a href="payroll.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-white">Simple Payroll</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+
+ <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="conversion.html" class="w3-bar-item w3-button w3-padding-large">Conversions</a>
+    <a href="incometax.html" class="w3-bar-item w3-button w3-padding-large">Income Tax Calculator</a>
+    <a href="factorial.html" class="w3-bar-item w3-button w3-padding-large">Factorials</a>
+    <a href="payroll.html" class="w3-bar-item w3-button w3-padding-large">Simple Payroll</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container w3-red w3-center" style="padding:65px 16px">
+<h1 class="w3-margin w3-jumbo w3-text-white w3-bold" style="font-family: Arial, sans-serif;">Simple Payroll</h1>
+</header>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10;
+            padding: 10;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 65px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+
+        table, th, td {
+            border: 2px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <title>Payroll Program</title>
+</head>
+<body>
+
+    <main>
+        <label for="employeeName">Employee Name: </label>
+        <input type="text" id="employeeName" placeholder="Enter employee name">
+
+        <label for="daysWorked">Days Worked:</label>
+        <input type="number" id="daysWorked" placeholder="Enter days worked">
+
+        <label for="dailyRate">Daily Rate:</label>
+        <input type="number" id="dailyRate" placeholder="Enter daily rate">
+
+        <label for="deductionAmount">Deduction Amount:</label>
+        <input type="number" id="deductionAmount" placeholder="Enter deduction amount">
+
+        <button onclick="addOrUpdateEmployee()">Add Employee</button>
+
+        <table id="payrollTable">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Employee Name</th>
+                    <th>Days Worked</th>
+                    <th>Daily Rate</th>
+                    <th>Gross Pay</th>
+                    <th>Deduction Amount</th>
+                    <th>Net Pay</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="payrollBody"></tbody>
+        </table>
+    </main>
+
+    <script>
+        let payrollList = [];
+
+        function addOrUpdateEmployee() {
+            const employeeName = document.getElementById("employeeName").value;
+            const daysWorked = parseInt(document.getElementById("daysWorked").value);
+            const dailyRate = parseInt(document.getElementById("dailyRate").value);
+            const deductionAmount = parseInt(document.getElementById("deductionAmount").value);
+
+            if (!employeeName || isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount)) {
+                alert("Please enter valid input for all fields.");
+                return;
+            }
+
+            const grossPay = daysWorked * dailyRate;
+            const netPay = grossPay - deductionAmount;
+
+            const existingEmployee = findEmployee(employeeName);
+            if (existingEmployee) {
+                // Update existing employee
+                existingEmployee.daysWorked = daysWorked;
+                existingEmployee.dailyRate = dailyRate;
+                existingEmployee.grossPay = grossPay;
+                existingEmployee.deductionAmount = deductionAmount;
+                existingEmployee.netPay = netPay;
+            } else {
+                // Add new employee
+                const employee = {
+                    employeeName,
+                    daysWorked,
+                    dailyRate,
+                    grossPay,
+                    deductionAmount,
+                    netPay
+                };
+                payrollList.push(employee);
+            }
+
+            displayPayroll();
+            clearInputs();
+        }
+
+        function deleteEmployee(lineNumber) {
+            payrollList.splice(lineNumber - 1, 1);
+            displayPayroll();
+        }
+
+        function editEmployee(employeeName) {
+            const employee = findEmployee(employeeName);
+            if (employee) {
+                document.getElementById("employeeName").value = employee.employeeName;
+                document.getElementById("daysWorked").value = employee.daysWorked;
+                document.getElementById("dailyRate").value = employee.dailyRate;
+                document.getElementById("deductionAmount").value = employee.deductionAmount;
+            }
+        }
+
+        function findEmployee(employeeName) {
+            return payrollList.find(employee => employee.employeeName === employeeName);
+        }
+
+        function displayPayroll() {
+            const payrollBody = document.getElementById("payrollBody");
+            payrollBody.innerHTML = "";
+
+            payrollList.forEach((employee, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${employee.employeeName}</td>
+                    <td>${employee.daysWorked}</td>
+                    <td>${employee.dailyRate}</td>
+                    <td>${employee.grossPay}</td>
+                    <td>${employee.deductionAmount}</td>
+                    <td>${employee.netPay}</td>
+                    <td>
+                        <button onclick="deleteEmployee(${index + 1})">Delete</button>
+                        <button onclick="editEmployee('${employee.employeeName}')">Edit</button>
+                        <button onclick="updateEmployee(${index + 1})">Update</button>
+                    </td>
+                `;
+                payrollBody.appendChild(row);
+            });
+        }
+
+        function updateEmployee(lineNumber) {
+            const employeeName = document.getElementById("employeeName").value;
+            const daysWorked = parseInt(document.getElementById("daysWorked").value);
+            const dailyRate = parseInt(document.getElementById("dailyRate").value);
+            const deductionAmount = parseInt(document.getElementById("deductionAmount").value);
+
+            if (!employeeName || isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount)) {
+                alert("Please enter valid input for all fields.");
+                return;
+            }
+
+            const grossPay = daysWorked * dailyRate;
+            const netPay = grossPay - deductionAmount;
+
+            payrollList[lineNumber - 1] = {
+                employeeName,
+                daysWorked,
+                dailyRate,
+                grossPay,
+                deductionAmount,
+                netPay
+            };
+
+            displayPayroll();
+            clearInputs();
+        }
+
+        function clearInputs() {
+            document.getElementById("employeeName").value = "";
+            document.getElementById("daysWorked").value = "";
+            document.getElementById("dailyRate").value = "";
+            document.getElementById("deductionAmount").value = "";
+        }
+    </script>
+</body>
+</html>
